@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router'; 
+import { useNavigate } from 'react-router';
 import { NavLink } from 'react-router';
 import axios from 'axios';
 
 const Login = () => {
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
     const navLinks = [
         { name: 'Products', href: '/products' },
         { name: 'Solutions', href: '/solutions' },
@@ -15,35 +15,49 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [authTab, setAuthTab] = useState("signin");
 
-    const handleSignup = async () => {
-        try {
-            const response = await axios.post("http://localhost:5050/signup", {
-                username: email, 
-                password: password
-            });
-            alert("Account has been created ");
-            setAuthTab('signin');
-        } catch (err) {
-            alert(err.response?.data?.message || "Signup failed");
-        }
-    };
+    const handleSignup = async (e) => {
+        // if (e) e.preventDefault();
 
-    
-    const handleLogin = async (e) => {
-        e.preventDefault(); 
+        const BACKEND_URL = process.env.REACT_APP_API_URL || "http://localhost:5050";
+
         try {
-            const response = await axios.post("http://localhost:5050/login", {
+            const response = await axios.post(`${BACKEND_URL}/signup`, {
                 username: email,
                 password: password
             });
 
-            
-            localStorage.setItem("token", response.data.token);
+            alert("Account has been created! 🎉");
 
+            setAuthTab('signin');
+
+        } catch (err) {
+            console.error("Signup Error:", err);
+
+            const errorMessage = err.response?.data?.message || "Signup failed. Please try again.";
+            alert(errorMessage);
+        }
+    };
+
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+
+        // Environment variable se URL uthana
+        const BACKEND_URL = process.env.REACT_APP_API_URL || "http://localhost:5050";
+
+        try {
+            const response = await axios.post(`${BACKEND_URL}/login`, {
+                username: email,
+                password: password
+            });
+
+            localStorage.setItem("token", response.data.token);
             alert("Login Successful!");
             navigate('/dashboard');
+
         } catch (err) {
-            alert(err.response?.data?.message || "Invalid Credentials");
+            console.error("Login Error:", err);
+            alert(err.response?.data?.message || "Connection Error");
         }
     };
     return (
