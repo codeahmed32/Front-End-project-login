@@ -16,9 +16,8 @@ const Login = () => {
     const [authTab, setAuthTab] = useState("signin");
 
     const handleSignup = async (e) => {
-        // if (e) e.preventDefault();
 
-        const BACKEND_URL = process.env.REACT_APP_API_URL || "http://localhost:5050";
+        const BACKEND_URL = import.meta.env.VITE_API_URL;
 
         try {
             const response = await axios.post(`${BACKEND_URL}/signup`, {
@@ -26,7 +25,7 @@ const Login = () => {
                 password: password
             });
 
-            alert("Account has been created! 🎉");
+            alert("Account has been created! ");
 
             setAuthTab('signin');
 
@@ -42,8 +41,7 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
 
-        // Environment variable se URL uthana
-        const BACKEND_URL = process.env.REACT_APP_API_URL || "http://localhost:5050";
+        const BACKEND_URL = import.meta.env.VITE_API_URL;
 
         try {
             const response = await axios.post(`${BACKEND_URL}/login`, {
