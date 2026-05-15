@@ -15,48 +15,35 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [authTab, setAuthTab] = useState("signin");
 
-    const handleSignup = async (e) => {
-
-        const BACKEND_URL = import.meta.env.VITE_API_URL;
-
+    const handleSignup = async () => {
         try {
-            const response = await axios.post(`${BACKEND_URL}/signup`, {
+            const response = await axios.post("http://localhost:5050/signup", {
                 username: email,
                 password: password
             });
-
-            alert("Account has been created! ");
-
+            alert("Account has been created ");
             setAuthTab('signin');
-
         } catch (err) {
-            console.error("Signup Error:", err);
-
-            const errorMessage = err.response?.data?.message || "Signup failed. Please try again.";
-            alert(errorMessage);
+            alert(err.response?.data?.message || "Signup failed");
         }
+
     };
 
 
     const handleLogin = async (e) => {
         e.preventDefault();
-
-        const BACKEND_URL = import.meta.env.VITE_API_URL;
-
         try {
-            const response = await axios.post(`${BACKEND_URL}/login`, {
+            const response = await axios.post("http://localhost:5050/login", {
                 username: email,
                 password: password
             });
-
             localStorage.setItem("token", response.data.token);
             alert("Login Successful!");
             navigate('/dashboard');
-
         } catch (err) {
-            console.error("Login Error:", err);
-            alert(err.response?.data?.message || "Connection Error");
+            alert(err.response?.data?.message || "Invalid Credentials");
         }
+
     };
     return (
         <div className="bg-[#f7f9fb] text-[#191c1e] min-h-screen flex flex-col font-['Inter'] selection:bg-[#d2e4fb]">
