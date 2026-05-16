@@ -17,60 +17,60 @@ const Login = () => {
     // old code 
 
 
-    // const handleSignup = async () => {
-    //     try {
-    //         const response = await axios.post("http://localhost:5050/signup", {
-    //             username: email,
-    //             password: password
-    //         });
-    //         alert("Account has been created ");
-    //         setAuthTab('signin');
-    //     } catch (err) {
-    //         alert(err.response?.data?.message || "Signup failed");
-    //     }
+    const handleSignup = async () => {
+        try {
+            const response = await axios.post("http://localhost:5050/signup", {
+                username: email,
+                password: password
+            });
+            alert("Account has been created ");
+            setAuthTab('signin');
+        } catch (err) {
+            alert(err.response?.data?.message || "Signup failed");
+        }
 
-    // };
+    };
 
     // new code
 
 
-    const handleSignup = async () => {
-        // Railway ka link variable mein rakhna behtar hai
-        const BACKEND_URL = "https://backend-project-login-production.up.railway.app";
+    // const handleSignup = async () => {
+    //     // Railway ka link variable mein rakhna behtar hai
+    //     const BACKEND_URL = "https://backend-project-login-production.up.railway.app";
 
-        try {
-            const response = await axios.post(`${BACKEND_URL}/signup`, {
-                username: email,
-                password: password
-            });
+    //     try {
+    //         const response = await axios.post(`${BACKEND_URL}/signup`, {
+    //             username: email,
+    //             password: password
+    //         });
 
-            alert("Account has been created successfully!");
-            setAuthTab('signin');
+    //         alert("Account has been created successfully!");
+    //         setAuthTab('signin');
 
-        } catch (err) {
-            console.error("Signup Error:", err);
-            alert(err.response?.data?.message || "Connection Error: Check if backend is live");
-        }
-    };
+    //     } catch (err) {
+    //         console.error("Signup Error:", err);
+    //         alert(err.response?.data?.message || "Connection Error: Check if backend is live");
+    //     }
+    // };
 
     // old code 
 
 
-    // const handleLogin = async (e) => {
-    //     e.preventDefault();
-    //     try {
-    //         const response = await axios.post("http://localhost:5050/login", {
-    //             username: email,
-    //             password: password
-    //         });
-    //         localStorage.setItem("token", response.data.token);
-    //         alert("Login Successful!");
-    //         navigate('/dashboard');
-    //     } catch (err) {
-    //         alert(err.response?.data?.message || "Invalid Credentials");
-    //     }
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post("http://localhost:5050/login", {
+                username: email,
+                password: password
+            });
+            localStorage.setItem("token", response.data.token);
+            alert("Login Successful!");
+            navigate('/dashboard');
+        } catch (err) {
+            alert(err.response?.data?.message || "Invalid Credentials");
+        }
 
-    // };
+    };
 
 
 
@@ -81,27 +81,27 @@ const Login = () => {
 
 
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
+    // const handleLogin = async (e) => {
+    //     e.preventDefault();
 
-        // Localhost ko hata kar apna Railway wala link yahan likhein
-        const BACKEND_URL = "https://backend-project-login-production.up.railway.app";
+    //     // Localhost ko hata kar apna Railway wala link yahan likhein
+    //     const BACKEND_URL = "https://backend-project-login-production.up.railway.app";
 
-        try {
-            const response = await axios.post(`${BACKEND_URL}/login`, {
-                username: email,
-                password: password
-            });
+    //     try {
+    //         const response = await axios.post(`${BACKEND_URL}/login`, {
+    //             username: email,
+    //             password: password
+    //         });
 
-            localStorage.setItem("token", response.data.token);
-            alert("Login Successful!");
-            navigate('/dashboard');
+    //         localStorage.setItem("token", response.data.token);
+    //         alert("Login Successful!");
+    //         navigate('/dashboard');
 
-        } catch (err) {
-            console.error("Login Error:", err);
-            alert(err.response?.data?.message || "Connection Error");
-        }
-    };
+    //     } catch (err) {
+    //         console.error("Login Error:", err);
+    //         alert(err.response?.data?.message || "Connection Error");
+    //     }
+    // };
 
     return (
         <div className="bg-[#f7f9fb] text-[#191c1e] min-h-screen flex flex-col font-['Inter'] selection:bg-[#d2e4fb]">
