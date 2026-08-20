@@ -1,16 +1,24 @@
-# React + Vite
+# AuthShield - Frontend Authentication Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A secure, responsive frontend user authentication interface built with React and Tailwind CSS. Provides client-side validation, JWT session handling, and structured user management flows.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* **Authentication Workflows:** Clean user interfaces for Login, Registration, and Password Reset.
+* **Client-Side Validation:** Form field checks and instant visual error handling before API dispatch.
+* **Responsive Layout:** Tailored with Tailwind CSS for high usability on mobile and desktop platforms.
+* **Session Management:** Secure token storage handling (JWT/Local State) and protected route controls.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **Framework:** React.js
+* **Styling:** Tailwind CSS
+* **Routing:** React Router DOM
+* **State/API:** JavaScript (ES6+), Axios / Fetch API
 
-## Expanding the ESLint configuration
+## ⚙️ Local Development Setup
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/YOUR_USERNAME/Front-End-project-login.git](https://github.com/YOUR_USERNAME/Front-End-project-login.git)
+   cd Front-End-project-login
